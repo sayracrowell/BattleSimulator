@@ -1,10 +1,13 @@
- import java.util.Random;
+/**
+ *This BattleSimulator Class is a simulation of a turn-based game
+ *The characters alternate between either attacking and healing based on a random
+ * @Sayra Crowell
+ * @date 4-08-25
+ */
+import java.util.Random;
 
  public class BattleSimulator 
- {
- 
-     private static final int STARTING_HEALTH = 50;
- 
+{
      public static void main(String[] args) 
      {
          // Create characters 
@@ -35,19 +38,23 @@
              }
  
              // Player 2's turn
-             if (rand.nextInt(100) < 70) {
-                 int damage = player2.attack(player1);
-                 System.out.println(player2.getName() + " ATTACKS! They inflict " + damage + " damage.");
-             } else {
-                 int healed = player2.heal();
-                 System.out.println(player2.getName() + " HEALS. They gained " + healed + " health.");
-             }
- 
+             // added check health for player 2
+             if (player2.getHealth()>0) 
+            {
+                if (rand.nextInt(100) < 70) 
+                {
+                    int damage = player2.attack(player1);
+                    System.out.println(player2.getName() + " ATTACKS! They inflict " + damage + " damage.");
+                } else {
+                    int healed = player2.heal();
+                    System.out.println(player2.getName() + " HEALS. They gained " + healed + " health.");
+                }
+            }
              // Current Status
              System.out.println("-------------------");
              System.out.println("Current Status:");
-             System.out.println(player1.getName() + " health remaining: " + player1.getHealth());
-             System.out.println(player2.getName() + " health remaining: " + player2.getHealth());
+             System.out.println(player1);
+             System.out.println(player2);
              System.out.println("-------------------");
          }
  
@@ -59,7 +66,8 @@
          {
              System.out.println("Sadly, the duel has left them both dead.");
          } 
-         else if (player1.getHealth() <= 0) {
+         else if (player1.getHealth() <= 0) 
+         {
              System.out.println(player2.getName() + " is triumphant this eve!");
          } 
          else 
@@ -67,4 +75,4 @@
              System.out.println(player1.getName() + " has emerged victorious!");
          }
      }
- }
+}
