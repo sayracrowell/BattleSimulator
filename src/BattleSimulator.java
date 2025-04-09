@@ -1,8 +1,8 @@
 /**
  *This BattleSimulator Class is a simulation of a turn-based game
- *The characters alternate between either attacking and healing based on a random
+ The characters alternate between either attacking and healing based on a random
  * @Sayra Crowell
- * @date 4-08-25
+ * date 4-08-25
  */
 import java.util.Random;
 
@@ -38,18 +38,17 @@ import java.util.Random;
              }
  
              // Player 2's turn
-             // added check health for player 2
-             if (player2.getHealth()>0) 
-            {
                 if (rand.nextInt(100) < 70) 
                 {
                     int damage = player2.attack(player1);
                     System.out.println(player2.getName() + " ATTACKS! They inflict " + damage + " damage.");
-                } else {
+                } 
+                else 
+                {
                     int healed = player2.heal();
                     System.out.println(player2.getName() + " HEALS. They gained " + healed + " health.");
                 }
-            }
+              
              // Current Status
              System.out.println("-------------------");
              System.out.println("Current Status:");
@@ -70,7 +69,7 @@ import java.util.Random;
          {
              System.out.println(player2.getName() + " is triumphant this eve!");
          } 
-         else 
+         else if (player2.getHealth() <=0)
          {
              System.out.println(player1.getName() + " has emerged victorious!");
          }
